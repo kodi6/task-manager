@@ -7,6 +7,7 @@ defmodule TaskManager.Accounts.User do
   schema "users" do
     field :name, :string
     field :email, :string
+    has_many :tasks, TaskManager.Tasks.Task
 
     timestamps(type: :utc_datetime)
   end
