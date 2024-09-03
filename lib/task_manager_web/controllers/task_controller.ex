@@ -26,5 +26,11 @@ defmodule TaskManagerWeb.TaskController do
     render(conn, :show, task: task)
   end
 
+  def update(conn, %{"user_id" => user_id, "task_id" => task_id, "task" => task_params}) do
+    with {:ok, %Task{} = task} <- Tasks.update_user_task(user_id, task_id, task_params) do
+      render(conn, :show, task: task)
+    end
+  end
+
 
 end
