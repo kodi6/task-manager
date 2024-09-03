@@ -14,7 +14,8 @@ defmodule TaskManager.TasksFixtures do
         description: "some description",
         due_date: ~D[2024-09-15],
         status: "some status",
-        title: "some title"
+        title: "some title",
+        user_id: "f8f91b6d-4739-413c-92ed-2f0abae25e7e"
       })
       |> TaskManager.Tasks.create_task()
     task
