@@ -27,5 +27,12 @@ defmodule TaskManager.TasksTest do
       assert task.title == "some title"
       assert task.due_date == ~D[2024-09-15]
     end
+
+    test "get_user_tasks/1 returns all tasks with given user id" do
+      user = user_fixture()
+      task = task_fixture(%{user_id: user.id})
+      IO.inspect(task, label: "task")
+      assert Tasks.get_user_tasks(user.id) == [task]
+    end
   end
 end
