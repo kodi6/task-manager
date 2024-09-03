@@ -3,6 +3,14 @@ defmodule TaskManagerWeb.TaskJSON do
 
 
   @doc """
+  Renders a list of tasks.
+  """
+
+  def index(%{tasks: tasks}) do
+    %{data: for(task <- tasks, do: data(task))}
+  end
+
+  @doc """
   Renders a single task.
   """
   def show(%{task: task}) do
