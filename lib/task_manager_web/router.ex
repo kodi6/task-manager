@@ -14,14 +14,11 @@ defmodule TaskManagerWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", TaskManagerWeb do
-    pipe_through :browser
+  scope "/api", TaskManagerWeb do
+    pipe_through :api
 
-    get "/", PageController, :home
+    post "/users", UserController, :create
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", TaskManagerWeb do
-  #   pipe_through :api
-  # end
+
 end
