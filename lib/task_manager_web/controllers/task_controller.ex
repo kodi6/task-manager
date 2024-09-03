@@ -20,4 +20,11 @@ defmodule TaskManagerWeb.TaskController do
       |> render(:show, task: task)
     end
   end
+
+  def show(conn, %{"user_id" => user_id, "task_id" => task_id}) do
+    task = Tasks.get_user_task(user_id, task_id)
+    render(conn, :show, task: task)
+  end
+
+
 end
