@@ -38,4 +38,17 @@ defmodule TaskManager.Tasks do
     |> Repo.one()
   end
 
+  @doc """
+  Updates a specific task for the specified user.
+  """
+  def update_user_task(user_id, task_id, attrs) do
+    Task
+    |> where([t], t.user_id == ^user_id and t.id == ^task_id)
+    |> Repo.one()
+    |> case do
+      nil -> {:error, :not_found}
+      task -> task |> Task.changeset(attrs) |> Repo.update()
+    end
+  end
+
 end
