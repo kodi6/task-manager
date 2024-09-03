@@ -14,11 +14,9 @@ defmodule TaskManagerWeb.Router do
     plug :accepts, ["json"]
   end
 
-
-  #Other scopes may use custom stacks.
   scope "/api", TaskManagerWeb do
     pipe_through :api
 
-    post "/users", TaskManagerWeb.UserController, :create
+    post "/users", UserController, :create
   end
 end
