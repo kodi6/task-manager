@@ -47,7 +47,7 @@ defmodule TaskManager.TasksTest do
       assert fetched_task.user_id == task.user_id
     end
 
-    test "update_user_task/2 Updates a specific task for the specified user" do
+    test "update_user_task/2 updates a specific task for the specified user" do
       user = user_fixture()
       task = task_fixture(%{user_id: user.id})
       update_attrs = %{
@@ -61,6 +61,14 @@ defmodule TaskManager.TasksTest do
       assert updated_task.title == "updated title"
       assert updated_task.description == "updated description"
       assert updated_task.due_date == ~D[2024-12-31]
+    end
+
+    test "delete_user_task/2 deletes a specific task for the specified user" do
+      user = user_fixture()
+      task = task_fixture(%{user_id: user.id})
+
+      assert {:ok, %Task{}} = Tasks.delete_user_task(user.id, task.id)
+      assert is_nil(Tasks.get_user_task(user.id, task.id))
     end
   end
 end
