@@ -4,6 +4,7 @@ defmodule TaskManagerWeb.UserController do
   alias TaskManager.Accounts
   alias TaskManager.Accounts.User
 
+  action_fallback TaskManagerWeb.FallbackController
 
   def create(conn, %{"user" => user_params}) do
     with {:ok, %User{} = user} <- Accounts.create_user(user_params) do

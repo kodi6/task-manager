@@ -1,4 +1,4 @@
-defmodule TaskManagerWeb.ChangesetJson do
+defmodule TaskManagerWeb.ChangesetJSON do
   @doc """
   Renders changeset errors.
   """
