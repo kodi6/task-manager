@@ -18,4 +18,15 @@ defmodule TaskManager.Tasks do
     |> Task.changeset(attrs)
     |> Repo.insert()
   end
+
+
+  @doc """
+  Retrieves all tasks for the specified user.
+  """
+  def get_user_tasks(user_id) do
+    Task
+    |> where([t], t.user_id == ^user_id)
+    |> Repo.all()
+  end
+
 end
