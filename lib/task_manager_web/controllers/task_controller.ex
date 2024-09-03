@@ -9,7 +9,12 @@ defmodule TaskManagerWeb.TaskController do
 
   def index(conn, %{"user_id" => user_id}) do
     tasks = Tasks.get_user_tasks(user_id)
-    render(conn, :index, tasks: tasks)
+    case tasks do
+      [] -> {:error, :not_found}
+
+      tasks ->
+        render(conn, :index, tasks: tasks)
+    end
   end
 
 
