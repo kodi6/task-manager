@@ -22,8 +22,12 @@ defmodule TaskManagerWeb.TaskController do
   end
 
   def show(conn, %{"user_id" => user_id, "task_id" => task_id}) do
-    task = Tasks.get_user_task(user_id, task_id)
-    render(conn, :show, task: task)
+    case Tasks.get_user_task(user_id, task_id) do
+      nil -> {:error, :not_found}
+
+      task ->
+        render(conn, :show, task: task)
+    end
   end
 
   def update(conn, %{"user_id" => user_id, "task_id" => task_id, "task" => task_params}) do
