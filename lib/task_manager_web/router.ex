@@ -18,6 +18,7 @@ defmodule TaskManagerWeb.Router do
     pipe_through :api
 
     post "/users", UserController, :create
+    post "/users/:user_id/tasks", TaskController, :create
   end
 
 
