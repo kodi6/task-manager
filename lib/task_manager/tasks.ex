@@ -29,4 +29,13 @@ defmodule TaskManager.Tasks do
     |> Repo.all()
   end
 
+  @doc """
+  Retrieves a specific task for the specified user.
+  """
+  def get_user_task(user_id, task_id) do
+    Task
+    |> where([t], t.user_id == ^user_id and t.id == ^task_id)
+    |> Repo.one()
+  end
+
 end
