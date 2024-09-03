@@ -51,4 +51,18 @@ defmodule TaskManager.Tasks do
     end
   end
 
+  @doc """
+  Deletes a specific task for the specified user.
+  """
+  def delete_user_task(user_id, task_id) do
+    Task
+    |> where([t], t.user_id == ^user_id and t.id == ^task_id)
+    |> Repo.one()
+    |> case do
+      nil -> {:error, :not_found}
+      task -> Repo.delete(task)
+    end
+  end
+
+
 end
