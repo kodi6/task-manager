@@ -32,5 +32,10 @@ defmodule TaskManagerWeb.TaskController do
     end
   end
 
+  def delete(conn, %{"user_id" => user_id, "task_id" => task_id}) do
+    with {:ok, %Task{}} <- Tasks.delete_user_task(user_id, task_id) do
+      send_resp(conn, :no_content, "")
+    end
+  end
 
 end
