@@ -11,7 +11,7 @@ defmodule TaskManager.AccountsFixtures do
     {:ok, user} =
       attrs
       |> Enum.into(%{
-        email: "some email",
+        email: "some@gmail.com",
         name: "some name"
       })
       |> TaskManager.Accounts.create_user()
