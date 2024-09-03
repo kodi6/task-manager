@@ -19,6 +19,7 @@ defmodule TaskManagerWeb.Router do
 
     post "/users", UserController, :create
     post "/users/:user_id/tasks", TaskController, :create
+    get "/users/:user_id/tasks", TaskController, :index
   end
 
 
