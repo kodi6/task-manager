@@ -8,7 +8,6 @@ defmodule TaskManager.Tasks do
 
   alias TaskManager.Tasks.Task
 
-
   @doc """
     Creates a task.
   """
@@ -18,7 +17,6 @@ defmodule TaskManager.Tasks do
     |> Task.changeset(attrs)
     |> Repo.insert()
   end
-
 
   @doc """
   Retrieves all tasks for the specified user.
@@ -63,6 +61,4 @@ defmodule TaskManager.Tasks do
       task -> Repo.delete(task)
     end
   end
-
-
 end

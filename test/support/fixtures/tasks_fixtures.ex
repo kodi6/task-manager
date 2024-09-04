@@ -18,6 +18,7 @@ defmodule TaskManager.TasksFixtures do
         user_id: "f8f91b6d-4739-413c-92ed-2f0abae25e7e"
       })
       |> TaskManager.Tasks.create_task()
+
     task
   end
 end

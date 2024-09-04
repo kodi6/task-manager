@@ -1,6 +1,5 @@
-defmodule TaskManagerWeb.UserJSON  do
+defmodule TaskManagerWeb.UserJSON do
   alias TaskManager.Accounts.User
-
 
   @doc """
   Renders a single user.
@@ -16,5 +15,4 @@ defmodule TaskManagerWeb.UserJSON  do
       email: user.email
     }
   end
-
 end

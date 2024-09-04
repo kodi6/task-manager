@@ -6,17 +6,17 @@ defmodule TaskManagerWeb.TaskController do
 
   action_fallback TaskManagerWeb.FallbackController
 
-
   def index(conn, %{"user_id" => user_id}) do
     tasks = Tasks.get_user_tasks(user_id)
+
     case tasks do
-      [] -> {:error, :not_found}
+      [] ->
+        {:error, :not_found}
 
       tasks ->
         render(conn, :index, tasks: tasks)
     end
   end
-
 
   def create(conn, %{"task" => task_params}) do
     with {:ok, %Task{} = task} <- Tasks.create_task(task_params) do
@@ -28,7 +28,8 @@ defmodule TaskManagerWeb.TaskController do
 
   def show(conn, %{"user_id" => user_id, "task_id" => task_id}) do
     case Tasks.get_user_task(user_id, task_id) do
-      nil -> {:error, :not_found}
+      nil ->
+        {:error, :not_found}
 
       task ->
         render(conn, :show, task: task)
@@ -46,5 +47,4 @@ defmodule TaskManagerWeb.TaskController do
       send_resp(conn, :no_content, "")
     end
   end
-
 end

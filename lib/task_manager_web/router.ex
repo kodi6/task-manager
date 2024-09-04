@@ -29,6 +29,4 @@ defmodule TaskManagerWeb.Router do
 
     delete "/users/:user_id/tasks/:task_id", TaskController, :delete
   end
-
-
 end

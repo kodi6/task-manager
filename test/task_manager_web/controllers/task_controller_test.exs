@@ -4,9 +4,7 @@ defmodule TaskManagerWeb.TaskControllerTest do
   import TaskManager.TasksFixtures
   import TaskManager.AccountsFixtures
 
-
   alias TaskManager.Tasks.Task
-
 
   @update_attrs %{
     status: "some updated status",
@@ -43,13 +41,14 @@ defmodule TaskManagerWeb.TaskControllerTest do
   describe "create task" do
     test "renders task when data is valid", %{conn: conn} do
       user = user_fixture()
+
       create_attrs = %{
         status: "some status",
         description: "some description",
         title: "some title",
         due_date: ~D[2024-09-15],
-        user_id: user.id}
-
+        user_id: user.id
+      }
 
       conn = post(conn, ~p"/api/users/#{user.id}/tasks", task: create_attrs)
       assert %{"id" => id} = json_response(conn, 201)["data"]
@@ -100,19 +99,18 @@ defmodule TaskManagerWeb.TaskControllerTest do
       user_id = user.id
 
       assert %{
-        "id" => ^task_id,
-        "description" => "updated description",
-        "due_date" => "2024-09-20",
-        "status" => "updated status",
-        "title" => "updated title",
-        "user_id" => ^user_id
-      } = json_response(conn, 200)["data"]
+               "id" => ^task_id,
+               "description" => "updated description",
+               "due_date" => "2024-09-20",
+               "status" => "updated status",
+               "title" => "updated title",
+               "user_id" => ^user_id
+             } = json_response(conn, 200)["data"]
     end
 
     test "returns errors when data is invalid", %{conn: conn} do
       user = user_fixture()
       task = task_fixture(user_id: user.id)
-
 
       conn = put(conn, ~p"/api/users/#{user.id}/tasks/#{task.id}", task: @invalid_attrs)
       assert %{"errors" => _errors} = json_response(conn, 422)
@@ -131,5 +129,4 @@ defmodule TaskManagerWeb.TaskControllerTest do
 
     assert response(conn, 404)
   end
-
 end

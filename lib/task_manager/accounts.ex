@@ -8,7 +8,7 @@ defmodule TaskManager.Accounts do
 
   alias TaskManager.Accounts.User
 
-  @doc"""
+  @doc """
   Create a User.
   """
 
@@ -17,5 +17,4 @@ defmodule TaskManager.Accounts do
     |> User.changeset(attrs)
     |> Repo.insert()
   end
-
 end

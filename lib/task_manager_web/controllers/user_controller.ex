@@ -13,5 +13,4 @@ defmodule TaskManagerWeb.UserController do
       |> render(:show, user: user)
     end
   end
-
 end

@@ -11,8 +11,7 @@ defmodule TaskManager.Application do
       TaskManagerWeb.Telemetry,
       TaskManager.Repo,
       {Ecto.Migrator,
-        repos: Application.fetch_env!(:task_manager, :ecto_repos),
-        skip: skip_migrations?()},
+       repos: Application.fetch_env!(:task_manager, :ecto_repos), skip: skip_migrations?()},
       {DNSCluster, query: Application.get_env(:task_manager, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: TaskManager.PubSub},
       # Start a worker by calling: TaskManager.Worker.start_link(arg)
