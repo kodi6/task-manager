@@ -32,11 +32,11 @@ This is a simplified task management web application SaaS built using Elixir and
 
 ### Prerequisites
 
-- **Elixir:** Ensure Elixir is installed. Download from [elixir-lang.org](https://elixir-lang.org/install.html).
-- **Phoenix Framework:** Install the Phoenix mix archive if not already installed:
-  ```sh
-  mix archive.install hex phx_new
-
+-**Elixir:** Ensure Elixir is installed. Download from [elixir-lang.org](https://elixir-lang.org/install.html).
+ -**Phoenix Framework:** Install the Phoenix mix archive if not already installed:
+  ```
+ mix archive.install hex phx_new
+```
 ### Clone the Repository
 
 ```
@@ -62,129 +62,127 @@ mix phx.server
 ```
 ### Using Postman for API Testing
 
-Let's start trying our Endpoints
-
+Let's start testing our endpoints.
 1. Create a New User:
 
-Method: POST
-URL: http://localhost:4000/api/users                          
-Body: (form-date) you can also give in raw jason format.
-Body:
+- Method: POST
+- URL: http://localhost:4000/api/users                          
+- Body: (form-date) you can also give in raw jason format.
+- Body:
 Key: user[name], Value: John Doe
 Key: user[email], Value: john@example.com
 
-Output:
-{
-    "data": {
-        "id": "6ab16ea0-f23a-4b64-86ee-2dbfa3561da1",
-        "name": "John Doe",
-        "email": "john@example.com"
-    }
-}
+- Output:
+			{
+				"data": {
+					"id": "6ab16ea0-f23a-4b64-86ee-2dbfa3561da1",
+					"name": "John Doe",
+					"email": "john@example.com"
+				}
+			}
 
-Save the "id".
+- Save the "id".
 
 2. Create a New Task:
 
-Method: POST
-URL: http://localhost:4000/api/users/:user_id/tasks
-Body Type: form-data
-Body:
+- Method: POST
+- URL: http://localhost:4000/api/users/:user_id/tasks
+- Body Type: form-data
+- Body:
 Key: task[title], Value: Sample Task
 Key: task[description], Value: This is a sample task.
 Key: task[due_date], Value: 2024-12-31
 Key: task[status], Value: To Do
 Key: task[user_id], Value: 6ab16ea0-f23a-4b64-86ee-2dbfa3561da1 #### use saved id
 
-Output:
-{
-    "data": {
-        "id": "ebac4c2b-a23d-4c70-bbef-e52288786501",
-        "status": "To Do",
-        "description": "This is a sample task.",
-        "title": "Sample Task",
-        "due_date": "2024-12-31",
-        "user_id": "6ab16ea0-f23a-4b64-86ee-2dbfa3561da1"
-    }
-}
+- Output:
+			{
+				"data": {
+					"id": "ebac4c2b-a23d-4c70-bbef-e52288786501",
+					"status": "To Do",
+					"description": "This is a sample task.",
+					"title": "Sample Task",
+					"due_date": "2024-12-31",
+					"user_id": "6ab16ea0-f23a-4b64-86ee-2dbfa3561da1"
+				}
+			}
 
-Reapte this step to create more tasks.
+- Repeat this step to create more tasks.
 
 3.Retrieve All Tasks for a User:
 
-Method: GET
-URL: http://localhost:4000/api/users/:user_id/tasks #### use saved id
+- Method: GET
+- URL: http://localhost:4000/api/users/:user_id/tasks #### use saved id
 
-Output:
-{
-    "data": [
-        {
-            "id": "ebac4c2b-a23d-4c70-bbef-e52288786501",
-            "status": "To Do",
-            "description": "This is a sample task 1.",
-            "title": "Sample Task",
-            "due_date": "2024-12-31",
-            "user_id": "6ab16ea0-f23a-4b64-86ee-2dbfa3561da1"
-        },
-        {
-            "id": "07832ffd-197b-4d19-9e48-31c2686ef949",
-            "status": "To Do",
-            "description": "This is a sample task 2.",
-            "title": "Sample Task",
-            "due_date": "2024-12-31",
-            "user_id": "6ab16ea0-f23a-4b64-86ee-2dbfa3561da1"
-        }
-    ]
-}
+- Output:
+				{
+					"data": [
+						{
+							"id": "ebac4c2b-a23d-4c70-bbef-e52288786501",
+							"status": "To Do",
+							"description": "This is a sample task 1.",
+							"title": "Sample Task",
+							"due_date": "2024-12-31",
+							"user_id": "6ab16ea0-f23a-4b64-86ee-2dbfa3561da1"
+						},
+						{
+							"id": "07832ffd-197b-4d19-9e48-31c2686ef949",
+							"status": "To Do",
+							"description": "This is a sample task 2.",
+							"title": "Sample Task",
+							"due_date": "2024-12-31",
+							"user_id": "6ab16ea0-f23a-4b64-86ee-2dbfa3561da1"
+						}
+					]
+				}
 
 4. Retrieve a Specific Task:
 
-Method: GET
-URL: http://localhost:4000/api/users/:user_id/tasks/:task_id
+- Method: GET
+- URL: http://localhost:4000/api/users/:user_id/tasks/:task_id
 
-Output:
-
-{
-    "data": {
-        "id": "07832ffd-197b-4d19-9e48-31c2686ef949",
-        "status": "To Do",
-        "description": "This is a sample task 2.",
-        "title": "Sample Task",
-        "due_date": "2024-12-31",
-        "user_id": "6ab16ea0-f23a-4b64-86ee-2dbfa3561da1"
-    }
-}
+- Output:
+				{
+					"data": {
+						"id": "07832ffd-197b-4d19-9e48-31c2686ef949",
+						"status": "To Do",
+						"description": "This is a sample task 2.",
+						"title": "Sample Task",
+						"due_date": "2024-12-31",
+						"user_id": "6ab16ea0-f23a-4b64-86ee-2dbfa3561da1"
+					}
+				}
 
 
 5.Update a Specific Task:
 
-Method: PUT
-URL: http://localhost:4000/api/users/:user_id/tasks/:task_id
-Body Type: form-data
-Body:
+- Method: PUT
+- URL: http://localhost:4000/api/users/:user_id/tasks/:task_id
+- Body Type: form-data
+- Body:
 Key: task[title], Value: Updated Task
 Key: task[description], Value: This task has been updated.
 Key: task[due_date], Value: 2024-12-31
 Key: task[status], Value: In Progress
 
-Output:
-{
-    "data": {
-        "id": "07832ffd-197b-4d19-9e48-31c2686ef949",
-        "status": "In Progress",
-        "description": "This task has been updated.",
-        "title": "Updated Task",
-        "due_date": "2024-12-31",
-        "user_id": "6ab16ea0-f23a-4b64-86ee-2dbfa3561da1"
-    }
-}
+- Output:
+				{
+					"data": {
+						"id": "07832ffd-197b-4d19-9e48-31c2686ef949",
+						"status": "In Progress",
+						"description": "This task has been updated.",
+						"title": "Updated Task",
+						"due_date": "2024-12-31",
+						"user_id": "6ab16ea0-f23a-4b64-86ee-2dbfa3561da1"
+					}
+				}
 
 6. Delete a Specific Task:
 
-Method: DELETE
-URL: http://localhost:4000/api/users/:user_id/tasks/:task_id
+- Method: DELETE
+- URL: http://localhost:4000/api/users/:user_id/tasks/:task_id
 
-Output:
+- Output:
  You will be shown 204 No Content for the successful deletion.
 
 ### Run Tests
