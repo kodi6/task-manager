@@ -2,17 +2,14 @@ defmodule TaskManager.TasksTest do
   use TaskManager.DataCase
 
   alias TaskManager.Tasks
-  alias TaskManager.Accounts
 
   describe "tasks" do
     alias TaskManager.Tasks.Task
 
-    alias TaskManager.Accounts.User
 
     import TaskManager.TasksFixtures
     import TaskManager.AccountsFixtures
 
-    @invalid_attrs %{status: nil, description: nil, title: nil, due_date: nil, user_id: nil}
 
     test "create_task/1 with valid data creates a task" do
       user = user_fixture()
