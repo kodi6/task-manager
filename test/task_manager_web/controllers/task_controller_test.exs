@@ -63,4 +63,22 @@ defmodule TaskManagerWeb.TaskControllerTest do
     end
   end
 
+  describe "show task" do
+    test "renders task when task exists", %{conn: conn} do
+      user = user_fixture()
+      task = task_fixture(user_id: user.id)
+
+      conn = get(conn, ~p"/api/users/#{user.id}/tasks/#{task.id}")
+
+      response_data = json_response(conn, 200)["data"]
+
+      assert response_data["id"] == task.id
+      assert response_data["description"] == task.description
+      assert response_data["due_date"] == Date.to_string(task.due_date)
+      assert response_data["status"] == task.status
+      assert response_data["title"] == task.title
+      assert response_data["user_id"] == task.user_id
+    end
+  end
+
 end
