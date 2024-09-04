@@ -67,7 +67,7 @@ Let's start testing our endpoints.
 
 - Method: POST
 - URL: http://localhost:4000/api/users
-- **Body**(form-date-format) :
+- **Body**(form-data-format) :
 - Key: user[name], Value: John Doe
 - Key: user[email], Value: john@example.com
 - Output:
@@ -85,7 +85,7 @@ Let's start testing our endpoints.
 
 - Method: POST
 - URL: http://localhost:4000/api/users/:user_id/tasks
-- **Body**(form-date-format) :
+- **Body**(form-data-format) :
 - Key: task[title], Value: Sample Task
 - Key: task[description], Value: This is a sample task.
 - Key: task[due_date], Value: 2024-12-31
@@ -152,7 +152,7 @@ Let's start testing our endpoints.
 
 - Method: PUT
 - URL: http://localhost:4000/api/users/:user_id/tasks/:task_id
-- **Body**(form-date-format) :
+- **Body**(form-data-format) :
 - Key: task[title], Value: Updated Task
 - Key: task[description], Value: This task has been updated.
 - Key: task[due_date], Value: 2024-12-31
