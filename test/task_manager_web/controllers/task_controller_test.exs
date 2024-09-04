@@ -81,4 +81,42 @@ defmodule TaskManagerWeb.TaskControllerTest do
     end
   end
 
+  describe "update task" do
+    test "updates the task and renders the updated task when data is valid", %{conn: conn} do
+      user = user_fixture()
+      task = task_fixture(user_id: user.id)
+
+      create_attrs = %{
+        "title" => "updated title",
+        "description" => "updated description",
+        "due_date" => "2024-09-20",
+        "status" => "updated status",
+        user_id: user.id
+      }
+
+      conn = put(conn, ~p"/api/users/#{user.id}/tasks/#{task.id}", task: create_attrs)
+
+      task_id = task.id
+      user_id = user.id
+
+      assert %{
+        "id" => ^task_id,
+        "description" => "updated description",
+        "due_date" => "2024-09-20",
+        "status" => "updated status",
+        "title" => "updated title",
+        "user_id" => ^user_id
+      } = json_response(conn, 200)["data"]
+    end
+
+    test "returns errors when data is invalid", %{conn: conn} do
+      user = user_fixture()
+      task = task_fixture(user_id: user.id)
+
+
+      conn = put(conn, ~p"/api/users/#{user.id}/tasks/#{task.id}", task: @invalid_attrs)
+      assert %{"errors" => _errors} = json_response(conn, 422)
+    end
+  end
+
 end
