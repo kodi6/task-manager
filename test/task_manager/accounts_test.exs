@@ -6,8 +6,6 @@ defmodule TaskManager.AccountsTest do
   describe "users" do
     alias TaskManager.Accounts.User
 
-    @invalid_attrs %{name: nil, email: nil}
-
     test "create_user/1 with valid data creates a user" do
       valid_attrs = %{name: "some name", email: "some@gmail.com"}
 

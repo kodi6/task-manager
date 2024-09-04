@@ -4,15 +4,6 @@ defmodule TaskManagerWeb.TaskControllerTest do
   import TaskManager.TasksFixtures
   import TaskManager.AccountsFixtures
 
-  alias TaskManager.Tasks.Task
-
-  @update_attrs %{
-    status: "some updated status",
-    description: "some updated description",
-    title: "some updated title",
-    due_date: ~D[2024-09-16],
-    user_id: "f8f91b6d-4739-413c-92ed-2f0abae25e7a"
-  }
 
   @invalid_attrs %{status: nil, description: nil, title: nil, due_date: nil, user_id: nil}
 
@@ -51,7 +42,7 @@ defmodule TaskManagerWeb.TaskControllerTest do
       }
 
       conn = post(conn, ~p"/api/users/#{user.id}/tasks", task: create_attrs)
-      assert %{"id" => id} = json_response(conn, 201)["data"]
+      assert %{"id" => _id} = json_response(conn, 201)["data"]
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
