@@ -40,4 +40,27 @@ defmodule TaskManagerWeb.TaskControllerTest do
     end
   end
 
+  describe "create task" do
+    test "renders task when data is valid", %{conn: conn} do
+      user = user_fixture()
+      create_attrs = %{
+        status: "some status",
+        description: "some description",
+        title: "some title",
+        due_date: ~D[2024-09-15],
+        user_id: user.id}
+
+
+      conn = post(conn, ~p"/api/users/#{user.id}/tasks", task: create_attrs)
+      assert %{"id" => id} = json_response(conn, 201)["data"]
+    end
+
+    test "renders errors when data is invalid", %{conn: conn} do
+      user = user_fixture()
+
+      conn = post(conn, ~p"/api/users/#{user.id}/tasks", task: @invalid_attrs)
+      assert json_response(conn, 422)["errors"] != %{}
+    end
+  end
+
 end
