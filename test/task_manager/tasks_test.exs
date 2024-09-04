@@ -4,7 +4,6 @@ defmodule TaskManager.TasksTest do
   alias TaskManager.Tasks
   alias TaskManager.Accounts
 
-
   describe "tasks" do
     alias TaskManager.Tasks.Task
 
@@ -16,10 +15,15 @@ defmodule TaskManager.TasksTest do
     @invalid_attrs %{status: nil, description: nil, title: nil, due_date: nil, user_id: nil}
 
     test "create_task/1 with valid data creates a task" do
-
       user = user_fixture()
 
-      valid_attrs = %{status: "some status", description: "some description", title: "some title", due_date: ~D[2024-09-15], user_id: user.id}
+      valid_attrs = %{
+        status: "some status",
+        description: "some description",
+        title: "some title",
+        due_date: ~D[2024-09-15],
+        user_id: user.id
+      }
 
       assert {:ok, %Task{} = task} = Tasks.create_task(valid_attrs)
       assert task.status == "some status"
@@ -50,13 +54,17 @@ defmodule TaskManager.TasksTest do
     test "update_user_task/2 updates a specific task for the specified user" do
       user = user_fixture()
       task = task_fixture(%{user_id: user.id})
+
       update_attrs = %{
         status: "updated status",
         title: "updated title",
         description: "updated description",
         due_date: ~D[2024-12-31]
       }
-      assert {:ok, %Task{} = updated_task} = Tasks.update_user_task(user.id, task.id, update_attrs)
+
+      assert {:ok, %Task{} = updated_task} =
+               Tasks.update_user_task(user.id, task.id, update_attrs)
+
       assert updated_task.status == "updated status"
       assert updated_task.title == "updated title"
       assert updated_task.description == "updated description"

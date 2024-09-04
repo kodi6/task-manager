@@ -16,5 +16,4 @@ defmodule TaskManager.AccountsTest do
       assert user.email == "some@gmail.com"
     end
   end
-
 end

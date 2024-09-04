@@ -1,7 +1,6 @@
 defmodule TaskManagerWeb.TaskJSON do
   alias TaskManager.Tasks.Task
 
-
   @doc """
   Renders a list of tasks.
   """

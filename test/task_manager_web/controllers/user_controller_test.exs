@@ -5,7 +5,6 @@ defmodule TaskManagerWeb.UserControllerTest do
 
   alias TaskManager.Accounts.User
 
-
   @create_attrs %{
     name: "some name",
     email: "some@gmail.com"
@@ -15,7 +14,6 @@ defmodule TaskManagerWeb.UserControllerTest do
     email: "someupdated@gmail.com"
   }
   @invalid_attrs %{name: nil, email: nil}
-
 
   setup %{conn: conn} do
     {:ok, conn: put_req_header(conn, "accept", "application/json")}
@@ -32,5 +30,4 @@ defmodule TaskManagerWeb.UserControllerTest do
       assert json_response(conn, 422)["errors"] != %{}
     end
   end
-
 end
