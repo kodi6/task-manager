@@ -66,12 +66,10 @@ Let's start testing our endpoints.
 1. Create a New User:
 
 - Method: POST
-- URL: http://localhost:4000/api/users                          
-- Body: (form-date) you can also give in raw jason format.
-- Body:
-Key: user[name], Value: John Doe
-Key: user[email], Value: john@example.com
-
+- URL: http://localhost:4000/api/users
+- **Body**(form-date-format) :
+- Key: user[name], Value: John Doe
+- Key: user[email], Value: john@example.com
 - Output:
 ```{
     "data": {
@@ -87,14 +85,12 @@ Key: user[email], Value: john@example.com
 
 - Method: POST
 - URL: http://localhost:4000/api/users/:user_id/tasks
-- Body Type: form-data
-- Body:
-Key: task[title], Value: Sample Task
-Key: task[description], Value: This is a sample task.
-Key: task[due_date], Value: 2024-12-31
-Key: task[status], Value: To Do
-Key: task[user_id], Value: 6ab16ea0-f23a-4b64-86ee-2dbfa3561da1 #### use saved id
-
+- **Body**(form-date-format) :
+- Key: task[title], Value: Sample Task
+- Key: task[description], Value: This is a sample task.
+- Key: task[due_date], Value: 2024-12-31
+- Key: task[status], Value: To Do
+- Key: task[user_id], Value: 6ab16ea0-f23a-4b64-86ee-2dbfa3561da1
 - Output:
 ```{
     "data": {
@@ -113,7 +109,6 @@ Key: task[user_id], Value: 6ab16ea0-f23a-4b64-86ee-2dbfa3561da1 #### use saved i
 
 - Method: GET
 - URL: http://localhost:4000/api/users/:user_id/tasks #### use saved id
-
 - Output:
 ```{
     "data": [
@@ -140,7 +135,6 @@ Key: task[user_id], Value: 6ab16ea0-f23a-4b64-86ee-2dbfa3561da1 #### use saved i
 
 - Method: GET
 - URL: http://localhost:4000/api/users/:user_id/tasks/:task_id
-
 - Output:
 ```{
     "data": {
@@ -156,15 +150,13 @@ Key: task[user_id], Value: 6ab16ea0-f23a-4b64-86ee-2dbfa3561da1 #### use saved i
 
 5.Update a Specific Task:
 
-Method: PUT
-URL: http://localhost:4000/api/users/:user_id/tasks/:task_id
-Body Type: form-data
-Body:
-Key: task[title], Value: Updated Task
-Key: task[description], Value: This task has been updated.
-Key: task[due_date], Value: 2024-12-31
-Key: task[status], Value: In Progress
-
+- Method: PUT
+- URL: http://localhost:4000/api/users/:user_id/tasks/:task_id
+- **Body**(form-date-format) :
+- Key: task[title], Value: Updated Task
+- Key: task[description], Value: This task has been updated.
+- Key: task[due_date], Value: 2024-12-31
+- Key: task[status], Value: In Progress
 Output:
 ```{
     "data": {
@@ -179,11 +171,10 @@ Output:
 ```
 6. Delete a Specific Task:
 
-Method: DELETE
-URL: http://localhost:4000/api/users/:user_id/tasks/:task_id
-
-Output:
- You will be shown 204 No Content for the successful deletion.
+- Method: DELETE
+- URL: http://localhost:4000/api/users/:user_id/tasks/:task_id
+- Output:
+-  You will be shown 204 No Content for the successful deletion.
 
 ### Run Tests
 
