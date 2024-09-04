@@ -119,4 +119,17 @@ defmodule TaskManagerWeb.TaskControllerTest do
     end
   end
 
+  test "deletes task", %{conn: conn} do
+    user = user_fixture()
+    task = task_fixture(user_id: user.id)
+
+    conn = delete(conn, ~p"/api/users/#{user.id}/tasks/#{task.id}")
+
+    assert response(conn, 204)
+
+    conn = get(conn, ~p"/api/users/#{user.id}/tasks/#{task.id}")
+
+    assert response(conn, 404)
+  end
+
 end
