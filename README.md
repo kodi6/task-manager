@@ -73,14 +73,14 @@ Key: user[name], Value: John Doe
 Key: user[email], Value: john@example.com
 
 - Output:
-			{
+```			{
 				"data": {
 					"id": "6ab16ea0-f23a-4b64-86ee-2dbfa3561da1",
 					"name": "John Doe",
 					"email": "john@example.com"
 				}
 			}
-
+```
 - Save the "id".
 
 2. Create a New Task:
@@ -96,7 +96,7 @@ Key: task[status], Value: To Do
 Key: task[user_id], Value: 6ab16ea0-f23a-4b64-86ee-2dbfa3561da1 #### use saved id
 
 - Output:
-			{
+```			{
 				"data": {
 					"id": "ebac4c2b-a23d-4c70-bbef-e52288786501",
 					"status": "To Do",
@@ -106,7 +106,7 @@ Key: task[user_id], Value: 6ab16ea0-f23a-4b64-86ee-2dbfa3561da1 #### use saved i
 					"user_id": "6ab16ea0-f23a-4b64-86ee-2dbfa3561da1"
 				}
 			}
-
+```
 - Repeat this step to create more tasks.
 
 3.Retrieve All Tasks for a User:
@@ -115,7 +115,7 @@ Key: task[user_id], Value: 6ab16ea0-f23a-4b64-86ee-2dbfa3561da1 #### use saved i
 - URL: http://localhost:4000/api/users/:user_id/tasks #### use saved id
 
 - Output:
-				{
+```				{
 					"data": [
 						{
 							"id": "ebac4c2b-a23d-4c70-bbef-e52288786501",
@@ -135,14 +135,14 @@ Key: task[user_id], Value: 6ab16ea0-f23a-4b64-86ee-2dbfa3561da1 #### use saved i
 						}
 					]
 				}
-
+```
 4. Retrieve a Specific Task:
 
 - Method: GET
 - URL: http://localhost:4000/api/users/:user_id/tasks/:task_id
 
 - Output:
-				{
+```				{
 					"data": {
 						"id": "07832ffd-197b-4d19-9e48-31c2686ef949",
 						"status": "To Do",
@@ -152,7 +152,7 @@ Key: task[user_id], Value: 6ab16ea0-f23a-4b64-86ee-2dbfa3561da1 #### use saved i
 						"user_id": "6ab16ea0-f23a-4b64-86ee-2dbfa3561da1"
 					}
 				}
-
+```
 
 5.Update a Specific Task:
 
@@ -166,7 +166,7 @@ Key: task[due_date], Value: 2024-12-31
 Key: task[status], Value: In Progress
 
 - Output:
-				{
+```				{
 					"data": {
 						"id": "07832ffd-197b-4d19-9e48-31c2686ef949",
 						"status": "In Progress",
@@ -176,7 +176,7 @@ Key: task[status], Value: In Progress
 						"user_id": "6ab16ea0-f23a-4b64-86ee-2dbfa3561da1"
 					}
 				}
-
+```
 6. Delete a Specific Task:
 
 - Method: DELETE
