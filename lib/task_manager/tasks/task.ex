@@ -9,7 +9,7 @@ defmodule TaskManager.Tasks.Task do
     field :description, :string
     field :title, :string
     field :due_date, :date
-    field :user_id, :binary_id
+    belongs_to :user, TaskManager.Accounts.User
 
     timestamps(type: :utc_datetime)
   end
@@ -17,7 +17,7 @@ defmodule TaskManager.Tasks.Task do
   @doc false
   def changeset(task, attrs) do
     task
-    |> cast(attrs, [:title, :description, :due_date, :status])
-    |> validate_required([:title, :description, :due_date, :status])
+    |> cast(attrs, [:title, :description, :due_date, :status, :user_id])
+    |> validate_required([:title, :description, :due_date, :status, :user_id])
   end
 end

@@ -18,6 +18,16 @@ defmodule TaskManagerWeb.Router do
     pipe_through :api
 
     post "/users", UserController, :create
+
+    post "/users/:user_id/tasks", TaskController, :create
+
+    get "/users/:user_id/tasks", TaskController, :index
+
+    get "/users/:user_id/tasks/:task_id", TaskController, :show
+
+    put "/users/:user_id/tasks/:task_id", TaskController, :update
+
+    delete "/users/:user_id/tasks/:task_id", TaskController, :delete
   end
 
 
